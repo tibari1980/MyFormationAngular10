@@ -1,6 +1,6 @@
-# MyFormationAngular10
+# FormationAngular10
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
 ## Development server
 
@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Dans cette formation je vais essayer de vous explique pas à pas Angular 10  By Tibari ZEROUAL 
+Angular est le framework de Google qui permet de développer des applications robustes et centrées sur le client. Rapide, Angular constitue la référence pour développer une couche de présentation de votre application web sur mobile et desktop. 
+En constante évolution, Angular présente une nouvelle version tous les 6 mois. Complet, ce cours qui traite actuellement de la version 9, vous permet de faire un tour complet de ce framework, de la création du projet à la création de services. 
+Comprendre les architectures SPA
+Apprendre le langage TypeScript
+Créer un projet Angular via AngularCLI
+Déclarer des composants et des modules
+Utiliser des templates, le databinding, les directives
+Créer des services
+Mettre en œuvre le routing
+Appeler des WebServices REST
