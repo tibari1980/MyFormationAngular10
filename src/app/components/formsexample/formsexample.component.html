@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <h1>Utilisateur</h1>
+    <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+        {{ userForm.value | json }}
+        <br>
+        {{userModel | json}}
+        <br>
+        {{userForm.form.invalid}}
+        <div class="form-group">
+            <label for="nomFor">Nom</label>
+            <input type="text" #nom="ngModel" required name="nom" id="nomFor" [class.is-invalid]="nom.invalid && nom.touched" class="form-control" [(ngModel)]="userModel.nom">
+            <small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Nom est obligatoire</small>
+        </div>
+        <div class="form-group">
+            <label for="emailId">Email</label>
+            <input type="email" #email="ngModel" required class="form-control" [class.is-invalid]="email.invalid && email.touched" id="emailId" name="email" [(ngModel)]="userModel.email">
+            <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email est obligatoire.</small>
+        </div>
+        <div class="form-group">
+            <label for="telId">Téléphone</label>
+            <input type="text"  #telephone="ngModel" required pattern="^\d{10}$" id="telId" [class.is-invalid]="telephone.invalid && telephone.touched" class="form-control"
+                 name="telephone" [(ngModel)]="userModel.telephone">
+           <!-- <small class="text-danger" [class.d-none]="telephone.valid || telephone.untouched">
+                Téléphone est obligatoire et doit contenir 10 chiffres.
+            </small>-->
+            <div *ngIf="telephone.errors && (telephone.invalid || telephone.touched)">
+                <small class="text-danger" *ngIf="telephone.errors.required">Numéro de téléphone est obligatoire</small>
+                <small class="text-danger" *ngIf="telephone.errors.pattern">Numéro de téléphone doit contenir 10 chiffre</small>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="langId">Language :</label>
+            <select (blur)="valdidateLanguage(language.value)" (change)="valdidateLanguage(language.value)"  [class.is-invalid]="languageHasError && language.touched" #language="ngModel" name="language" id="langId " [(ngModel)]="userModel.language" class="custom-select" >
+                <option  value="default">je suis interessé par</option>
+                <option *ngFor="let lang of languages" value={{lang}}>{{lang}}</option>
+            </select>
+            <small class="text-danger" [class.d-none]="languageHasError || language.untouched">Choix de language est obligatoire</small>
+        </div>
+        <div class="mb-3">
+            <label>Temps préferé :</label>
+            <div class="form-check">
+                <input class="form-check-input" [(ngModel)]="userModel.tempsPrefere" type="radio" name="tempsPrefere" value="matin"/>
+                <label class="form-check-label">Matin(9Am-12AM)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" [(ngModel)]="userModel.tempsPrefere" type="radio" name="tempsPrefere" value="aprsMidi"/>
+                <label class="form-check-label">Aprés Midi(13PM-8PM</label>
+
+            </div>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" id="subscribId" name="subscribe" type="checkbox" [(ngModel)]="userModel.subscribe" />
+            <label class="form-check-label" for= "subscribId">Recevoir des offres promotionnels</label>
+
+        </div>
+        <button [disabled]="userForm.form.invalid || languageHasError" class="btn btn-primary" type="submit">envoyer</button>
+    </form>
+</div>
